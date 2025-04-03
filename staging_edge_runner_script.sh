@@ -1,5 +1,16 @@
 #!/bin/sh
 
+# Verify Connection to staging server before trying to run docker
+SERVER="eu1.staging.edge.xyte.io"
+PORT=443
+
+if echo "quit" | telnet "$SERVER" "$PORT" 2>/dev/null | grep -q "Connected"; then
+    echo "Connection successful"
+else
+    echo "Failed to connect to $SERVER on port $PORT."
+    exit 1
+fi
+
 # Start the Docker container (suppress stdout)
 docker run -d --privileged --network host --pull always --restart always -v ./edge_data:/xyte/edge_data --name xyte_edge xytetech/xyte_edge:staging > /dev/null
 
