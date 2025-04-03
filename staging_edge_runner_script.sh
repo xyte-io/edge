@@ -1,5 +1,11 @@
 #!/bin/sh
 
+# Check if telnet is installed
+if ! command -v telnet &>/dev/null; then
+    echo "Error: telnet is not installed. Please install it and try again."
+    exit 1
+fi
+
 # Verify Connection to staging server before trying to run docker
 SERVER="eu1.staging.edge.xyte.io"
 PORT=443
