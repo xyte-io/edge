@@ -1,5 +1,3 @@
-#!/bin/sh
-
 # Check if telnet is installed
 if ! command -v telnet &>/dev/null; then
     echo "Error: telnet is not installed. Please install it and try again."
