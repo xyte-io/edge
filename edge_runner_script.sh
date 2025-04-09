@@ -4,6 +4,12 @@ if ! command -v telnet &>/dev/null; then
     exit 1
 fi
 
+# Check if docker is installed
+if ! command -v docker &>/dev/null; then
+    echo "Error: docker is not installed. Please install it and try again."
+    exit 1
+fi
+
 # Verify Connection to the production server before trying to run docker
 SERVER="eu1.edge.xyte.io"
 PORT=443
