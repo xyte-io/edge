@@ -36,5 +36,7 @@ done
 file_content=$(cat "$file")
 
 # Print proxy name
-echo "\n\n"
-echo "Proxy Name: $file_content"
+echo "
+
+Proxy Name: $file_content
+"
