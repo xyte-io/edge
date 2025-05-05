@@ -11,7 +11,7 @@ if ! command -v docker &>/dev/null; then
 fi
 
 # Verify Connection to the production server before trying to run docker
-SERVER="eu1.edge.xyte.io"
+SERVER="eu1.staging.edge.xyte.io"
 PORT=443
 
 if echo "quit" | telnet "$SERVER" "$PORT" 2>/dev/null | grep -q "Connected"; then
@@ -22,7 +22,7 @@ else
 fi
 
 # Start the Docker container (suppress stdout)
-docker run -d --privileged --network host --pull always --restart always -v $(pwd)/edge_data:/xyte/edge_data --name xyte_edge xytetech/xyte_edge > /dev/null
+docker run -d --privileged --network host --pull always --restart always -v $(pwd)/edge_data:/xyte/edge_data --name xyte_edge xytetech/xyte_edge:staging > /dev/null
 
 # proxy name file (created by container)
 file="$(pwd)/edge_data/proxy_name.txt"
