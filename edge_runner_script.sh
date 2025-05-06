@@ -22,7 +22,7 @@ else
 fi
 
 # Start the Docker container (suppress stdout)
-docker run -d --privileged --network host --pull always --restart always -v $(pwd)/edge_data:/xyte/edge_data --name xyte_edge xytetech/xyte_edge > /dev/null
+docker run -d --privileged --network host --pull always --restart always -v $(pwd)/edge_data:/xyte/edge_data --name xyte_edge xytetech/xyte_edge:stable-latest > /dev/null
 
 # proxy name file (created by container)
 file="$(pwd)/edge_data/proxy_name.txt"
