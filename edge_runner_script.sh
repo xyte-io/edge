@@ -10,6 +10,28 @@ if ! command -v docker &>/dev/null; then
     exit 1
 fi
 
+
+# Create edge_data directory if it doesn't exist
+mkdir -p edge_data
+
+# Check if edge_data directory is writable (we need to create files and share them with host for persistance through restarts)
+if [ -w edge_data ]; then
+  echo "The current user has write permissions to the 'edge_data' directory."
+else
+  echo "No write permission to 'edge_data'. Attempting to add write permission..."
+
+  # Try to change permissions to allow the user to write
+  chmod u+w edge_data 2>/dev/null
+
+  # Check again
+  if [ -w edge_data ]; then
+    echo "Write permission successfully added."
+  else
+    echo "Failed to add write permission. You may need to run this script with elevated privileges (e.g., using sudo)."
+    exit 1
+  fi
+fi
+
 # Verify Connection to the production server before trying to run docker
 SERVER="eu1.staging.edge.xyte.io"
 PORT=443
