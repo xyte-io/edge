@@ -4,7 +4,7 @@
 1. Download the runner script.
 
 ```
-wget https://raw.githubusercontent.com/xyte-io/edge/refs/heads/staging/edge_runner_script.sh
+wget https://raw.githubusercontent.com/xyte-io/edge/refs/heads/main/edge_runner_script.sh
 ```
 
 2. Enable script execution
@@ -22,5 +22,5 @@ chmod +x ./edge_runner_script.sh
 ## One line installation
 
 ```
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/xyte-io/edge/refs/heads/staging/edge_runner_script.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/xyte-io/edge/refs/heads/main/edge_runner_script.sh)"
 ```
