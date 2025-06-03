@@ -22,5 +22,5 @@ chmod +x ./edge_runner_script.sh
 ## One line installation
 
 ```
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/xyte-io/edge/refs/heads/main/edge_runner_script.sh)"
+$(ps -p $$ -o comm=) -c "$(curl -fsSL https://raw.githubusercontent.com/xyte-io/edge/refs/heads/main/edge_runner_script.sh)"
 ```
