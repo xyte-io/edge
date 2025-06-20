@@ -38,5 +38,6 @@ file_content=$(cat "$file")
 # Print proxy name
 echo "
 
-Proxy Name: $file_content
+Edge ID: $file_content
+To claim this Edge, please visit https://app.xyte.io/edges
 "
