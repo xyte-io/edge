@@ -21,6 +21,13 @@ else
     exit 1
 fi
 
+# Remove version tag files if they exist. This way we will always pull the latest version.
+for f in "$(pwd)/edge_data/backup_version_tag.txt" "$(pwd)/edge_data/version_tag.txt"; do
+  if [ -f "$f" ]; then
+    rm -f "$f"
+  fi
+done
+
 # Start the Docker container (suppress stdout)
 docker run -d --privileged --network host --pull always --restart always -v $(pwd)/edge_data:/xyte/edge_data --name xyte_edge xytetech/xyte_edge:stable-latest > /dev/null
 
