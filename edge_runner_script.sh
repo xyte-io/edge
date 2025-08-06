@@ -34,10 +34,23 @@ docker run -d --privileged --network host --pull always --restart always -v $(pw
 # proxy name file (created by container)
 file="$(pwd)/edge_data/proxy_name.txt"
 
-# Wait for the file to exist (for the first run it might not exist because it is created by the containers first run)
-while [ ! -f "$file" ]; do
-  sleep 1  # Sleep for 1 second before checking again
+echo "
+Waiting for the Edge ID to be generated. This might take up to 90 seconds..."
+
+
+# Wait for the file to exist, but no longer than 90 seconds
+timeout=90
+elapsed=0
+while [ ! -f "$file" ] && [ $elapsed -lt $timeout ]; do
+  sleep 1
+  elapsed=$((elapsed + 1))
 done
+
+# If file still does not exist after timeout, exit with prompt
+if [ ! -f "$file" ]; then
+  echo "Unable to print Edge ID, please verify Edge is running using 'docker ps' and if so find Edge id using 'cat ./edge_data/proxy_name.txt'"
+  exit 1
+fi
 
 # Once the file exists, Read the content of the file into a variable
 file_content=$(cat "$file")
