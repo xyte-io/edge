@@ -5,7 +5,7 @@ if (-not (Get-Command docker -ErrorAction SilentlyContinue)) {
 }
 
 # Server and port
-$server = "eu1.staging.edge.xyte.io"
+$server = "eu1.edge.xyte.io"
 $port = 443
 
 # Test TCP connection to server
@@ -30,7 +30,7 @@ foreach ($f in @($backupTag, $versionTag)) {
 
 # Start the Docker container
 $edgeDataPath = Join-Path $PWD.Path "edge_data"
-docker run -d --privileged --network host --pull always --restart always -v "${edgeDataPath}:/xyte/edge_data" --name xyte_edge xytetech/xyte_edge:staging-stable-latest | Out-Null
+docker run -d --privileged --network host --pull always --restart always -v "${edgeDataPath}:/xyte/edge_data" --name xyte_edge xytetech/xyte_edge:stable-latest | Out-Null
 
 # proxy name file (created by container)
 $file = Join-Path $edgeDataPath "proxy_name.txt"
