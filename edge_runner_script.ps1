@@ -35,7 +35,7 @@ docker run -d --privileged --network host --pull always --restart always -v "${e
 # proxy name file (created by container)
 $file = Join-Path $edgeDataPath "proxy_name.txt"
 
-Write-Host "`nWaiting for the Edge ID to be generated. This might take up to 60 seconds..."
+Write-Host "Waiting for the Edge ID to be generated. This might take up to 60 seconds..."
 
 # Wait for the file to exist, but no longer than 60 seconds
 $timeout = 60
@@ -55,5 +55,5 @@ if (-not (Test-Path $file)) {
 $file_content = Get-Content $file
 
 # Print proxy name
-Write-Host "`nEdge ID: $file_content"
+Write-Host "Edge ID: $file_content"
 Write-Host "To claim this Edge, please visit
