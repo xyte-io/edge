@@ -20,8 +20,8 @@ try {
 }
 
 # Remove version tag files if they exist
-$backupTag = Join-Path $PWD "edge_data\backup_version_tag.txt"
-$versionTag = Join-Path $PWD "edge_data\version_tag.txt"
+$backupTag = Join-Path $PWD.Path "edge_data\backup_version_tag.txt"
+$versionTag = Join-Path $PWD.Path "edge_data\version_tag.txt"
 foreach ($f in @($backupTag, $versionTag)) {
     if (Test-Path $f) {
         Remove-Item $f -Force
@@ -29,7 +29,7 @@ foreach ($f in @($backupTag, $versionTag)) {
 }
 
 # Start the Docker container
-$edgeDataPath = Join-Path $PWD "edge_data"
+$edgeDataPath = Join-Path $PWD.Path "edge_data"
 docker run -d --privileged --network host --pull always --restart always -v "$edgeDataPath:/xyte/edge_data" --name xyte_edge xytetech/xyte_edge:staging-stable-latest | Out-Null
 
 # proxy name file (created by container)
