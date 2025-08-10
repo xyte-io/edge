@@ -1,26 +1,14 @@
 # Xyte Connect+ Edge
 
-## Download the installation script and run it manually
-1. Download the runner script.
+## Windows PowerShell Installation
+
+1. Download the PowerShell runner script:
 
 ```
-wget https://raw.githubusercontent.com/xyte-io/edge/refs/heads/main/edge_runner_script.sh
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/xyte-io/edge/refs/heads/main/edge_runner_script.ps1" -OutFile "edge_runner_script.ps1"
 ```
 
-2. Enable script execution
+2. Run the script in PowerShell:
 
 ```
-chmod +x ./edge_runner_script.sh
-```
-
-3. Run the script
-
-```
-./edge_runner_script.sh
-```
-
-## One line installation
-
-```
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/xyte-io/edge/refs/heads/main/edge_runner_script.sh)"
-```
+powershell -ExecutionPolicy Bypass
