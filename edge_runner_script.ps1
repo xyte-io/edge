@@ -56,4 +56,4 @@ $file_content = Get-Content $file
 
 # Print proxy name
 Write-Host "Edge ID: $file_content"
-Write-Host "To claim this Edge, please visit
+Write-Host "To claim this Edge, please visit"
