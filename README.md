@@ -11,4 +11,9 @@ Invoke-WebRequest -Uri "https://raw.githubusercontent.com/xyte-io/edge/refs/head
 2. Run the script in PowerShell:
 
 ```
-powershell -ExecutionPolicy Bypass
+powershell -ExecutionPolicy Bypass .\edge_runner_script.ps1
+```
+or
+```
+.\edge_runner_script.ps1
+```
